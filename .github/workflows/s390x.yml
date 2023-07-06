@@ -24,4 +24,4 @@ jobs:
             pacman -Sy --noconfirm
             pacman -S --noconfirm base-devel
             pacman -S --noconfirm maven
-            sudo apt-get update '
+            sudo apt-get update 
