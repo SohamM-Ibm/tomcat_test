@@ -44,7 +44,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: ${{ matrix.java }}
-        distribution: zulu
+        distribution: temurin
     - name: Build
       run: |
         ant -noinput echoproperties deploy embed test-nio test-status
