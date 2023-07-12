@@ -31,6 +31,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        include:
+          - arch: s390x
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
@@ -38,6 +40,8 @@ jobs:
     name: JDK${{ matrix.java }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Arch define
+      uses: uraimo/run-on-arch-action@master
     - name: Git Checkout
       uses: actions/checkout@v3
     - name: Set up Java
