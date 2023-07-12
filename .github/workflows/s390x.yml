@@ -33,15 +33,19 @@ jobs:
       matrix:
         isMain:
           - ${{ contains(github.ref, 'main') }}
-        java: [ 17 ]
-        os: [ ubuntu-latest, ubuntu-latest ]
+        java: [ 17, 20, 21-ea ]
+        os: [ ubuntu-latest, windows-latest ]
         exclude:
           - isMain: true
             java: 17
           - isMain: true
             java: 20
-    name: JDK${{ matrix.java }}
-    runs-on: ubuntu-latest
+          - os: windows-latest
+            java: 20
+          - os: windows-latest
+            java: 21-ea
+    name: JDK${{ matrix.java }} ${{ matrix.os }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
@@ -63,3 +67,4 @@ jobs:
         name: JDK${{ matrix.java }}-${{ matrix.os }}-logs
         path: output/build/logs/TEST*.txt
         retention-days: 7
+        arch: s390x
