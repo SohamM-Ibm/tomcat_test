@@ -16,9 +16,6 @@ on:
   push:
     branches:
       - main
-      - 10.1.x
-      - 9.0.x
-      - 8.5.x
   pull_request:
     branches:
       - main
@@ -31,17 +28,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - arch: s390x
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
         os: [ ubuntu-latest ]
+        exclude:
+          - isMain: true
+            java: 17
+          - isMain: true
+            java: 20
     name: JDK${{ matrix.java }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Arch define
-      uses: uraimo/run-on-arch-action@master
     - name: Git Checkout
       uses: actions/checkout@v3
     - name: Set up Java
