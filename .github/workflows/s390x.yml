@@ -41,7 +41,7 @@ jobs:
           - os: windows-latest
             java: 20
     name: JDK${{ matrix.java }} ${{ matrix.os }} ${{ matrix.arch }}
-    runs-on: ${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
