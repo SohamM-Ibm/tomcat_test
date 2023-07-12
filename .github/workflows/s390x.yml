@@ -35,12 +35,8 @@ jobs:
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17 ]
-        os: [ ubuntu-latest ]
-        exclude:
-          - isMain: true
-            java: 17
-    name: JDK${{ matrix.java }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: JDK${{ matrix.java }}
+    runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
