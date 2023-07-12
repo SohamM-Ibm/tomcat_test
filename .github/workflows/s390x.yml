@@ -16,6 +16,9 @@ on:
   push:
     branches:
       - main
+      - 10.1.x
+      - 9.0.x
+      - 8.5.x
   pull_request:
     branches:
       - main
@@ -31,27 +34,17 @@ jobs:
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
-        os: [ ubuntu:latest ]
-        exclude:
-          - isMain: true
-            java: 17
-          - isMain: true
-            java: 20
+        os: [ ubuntu-latest ]
     name: JDK${{ matrix.java }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Calculate BASE image
-      uses: uraimo/run-on-arch-action@master
-      id: base
-      with:
-        arch: s390x
     - name: Git Checkout
       uses: actions/checkout@v3
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
         java-version: ${{ matrix.java }}
-        distribution: temurin
+        distribution: zulu
     - name: Build
       run: |
         ant -noinput echoproperties deploy embed test-nio test-status
