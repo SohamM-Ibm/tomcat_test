@@ -55,10 +55,10 @@ jobs:
         java-version: ${{ matrix.java }}
         distribution: zulu
     - name: Build
-      uses: uraimo/run-on-arch-action@v2
-      id: base
+      uses: uraimo/run-on-arch-action@v2.5.0
       with:
         arch: s390x
+        distro: ubuntu20.04
         run: |
           ant -noinput echoproperties deploy embed test-nio test-status
       env:
