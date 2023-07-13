@@ -39,10 +39,6 @@ jobs:
             java: 17
           - isMain: true
             java: 20
-          - os: windows-latest
-            java: 20
-          - os: windows-latest
-            java: 21-ea
     name: JDK${{ matrix.java }}
     runs-on: ubuntu20.04
     steps:
