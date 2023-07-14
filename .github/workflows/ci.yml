@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        
+        platforms: [ linux/amd64, linux/s390x ]
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
