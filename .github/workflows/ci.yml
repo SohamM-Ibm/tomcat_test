@@ -35,7 +35,7 @@ jobs:
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20, 21-ea ]
-        os: [ ubuntu-latest ]
+        os: [ ubuntu20.04 ]
         exclude:
           - isMain: true
             java: 17
