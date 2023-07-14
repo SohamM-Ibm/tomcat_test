@@ -46,7 +46,7 @@ jobs:
           - os: windows-latest
             java: 21-ea
     name: JDK${{ matrix.java }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu20.04
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
