@@ -16,6 +16,9 @@ on:
   push:
     branches:
       - main
+      - 10.1.x
+      - 9.0.x
+      - 8.5.x
   pull_request:
     branches:
       - main
@@ -31,14 +34,9 @@ jobs:
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
-        os: [ ubuntu-latest ]
-        exclude:
-          - isMain: true
-            java: 17
-          - isMain: true
-            java: 20
+        os: [ ubuntu-latest, windows-latest ]
     name: JDK${{ matrix.java }} ${{ matrix.os }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
