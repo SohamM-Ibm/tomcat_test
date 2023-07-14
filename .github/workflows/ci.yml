@@ -36,15 +36,6 @@ jobs:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20 ]
         os: [ ubuntu20.04 ]
-        exclude:
-          - isMain: true
-            java: 17
-          - isMain: true
-            java: 20
-          - os: windows-latest
-            java: 20
-          - os: windows-latest
-            java: 21-ea
     name: JDK${{ matrix.java }} ${{ matrix.os }}
     runs-on: ubuntu20.04
     steps:
