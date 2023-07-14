@@ -55,7 +55,7 @@ jobs:
       uses: uraimo/run-on-arch-action@v2
       with:
         distro: ${{ matrix.os }}
-        arch: s390x
+        arch: amd64
         run: |
           ant -noinput echoproperties deploy embed test-nio test-status
       env:
