@@ -31,8 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: ['linux/amd64', 'linux/s390x']
-        architecture: [ s390x ]
+        
         isMain:
           - ${{ contains(github.ref, 'main') }}
         java: [ 17, 20, 21-ea ]
@@ -65,6 +64,7 @@ jobs:
       uses: uraimo/run-on-arch-action@v2
       with:
         distro: ${{ matrix.os }}
+        arch: s390x
         run: |
           ant -noinput echoproperties deploy embed test-nio test-status
       env:
